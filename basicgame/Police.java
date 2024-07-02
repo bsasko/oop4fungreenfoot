@@ -12,6 +12,8 @@ public class Police extends Actor
     private String down;
     private String left;
     private String right;
+    private int delay;
+    private int delayCounter;
     
     public Police(String up,String down, String left,String right)
     {
@@ -19,6 +21,8 @@ public class Police extends Actor
         this.down=down;
         this.left=left;
         this.right=right;
+        this.delay=3;
+        this.delayCounter=0;
         
     }
     /**
@@ -27,7 +31,23 @@ public class Police extends Actor
      */
     public void act()
     {
-       if(Greenfoot.isKeyDown(this.up)){
+        if (this.delayCounter==this.delay)
+        {
+            this.movement();
+            this.delayCounter=0;
+        }
+        else{
+                this.delayCounter++;
+            }
+        }
+       
+       /*if(Greenfoot.isKeyDown("b")){
+       /*         this.setLocation(this.getX(),this.getY()-1);          
+       }*/
+    
+       public void movement()
+        {
+         if(Greenfoot.isKeyDown(this.up)){
            this.setRotation(270);
            this.move(1); // Add your action code here.           
        }
@@ -45,10 +65,7 @@ public class Police extends Actor
        {
            this.setRotation(0);
            this.move(1); // Add your action code here.       
-       }
-       /*if(Greenfoot.isKeyDown("b")){
-           this.setLocation(this.getX(),this.getY()-1);          
-       }*/
-        
+       }   
+        }
     }
-}
+
