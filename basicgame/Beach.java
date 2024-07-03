@@ -25,4 +25,15 @@ public class Beach extends World
         );
         
     }
+    public void endTheGame(boolean vin)  // Ispis teksta u klasi Beach (početna klasa - canvas)
+    {
+    int x=this.getWidth()/2;
+    int y=this.getHeight()/2;
+     if(vin){
+        this.showText("POBJEDA!", x, y)  ; 
+     }else{
+        this.showText("IZGUBILI STE!", x, y)  ;  
+     }
+    Greenfoot.stop(); 
+    }
 }
