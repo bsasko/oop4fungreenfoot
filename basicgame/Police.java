@@ -44,7 +44,10 @@ public class Police extends Person
         {
           World world= this.getWorld();
           Beach beach=(Beach)world;
-          beach.endTheGame(true); // Pobjeda - šaljemo Beach klasi
+          if(beach!=null){
+            beach.endTheGame(true); // Pobjeda - šaljemo Beach klasi  
+          }
+          
         }
         }
        

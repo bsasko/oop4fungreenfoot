@@ -8,13 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Beach extends World
 {
-
+    private int counter; // za kraj igre kada gubimo        
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
     public Beach()
     {    
+        
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(15, 10, 60); 
         this.addObject(new Police("w","s","a","d"),0 ,0 );
@@ -23,6 +24,7 @@ public class Beach extends World
             Greenfoot.getRandomNumber(this.getWidth()),
             Greenfoot.getRandomNumber(this.getHeight())
         );
+        this.counter=100;  // 100 x pozivanje act metodw
         
     }
     public void endTheGame(boolean vin)  // Ispis teksta u klasi Beach (početna klasa - canvas)
@@ -35,5 +37,12 @@ public class Beach extends World
         this.showText("IZGUBILI STE!", x, y)  ;  
      }
     Greenfoot.stop(); 
+    }
+    public void act()
+    {
+       this.counter--;  // svaki act smanjuje counter (u početku je 100) - za gubitak
+       if(this.counter==0){
+           this.endTheGame(false);
+       }
     }
 }
