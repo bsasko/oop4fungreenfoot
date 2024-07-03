@@ -39,6 +39,10 @@ public class Police extends Actor
         else{
                 this.delayCounter++;
             }
+        if(this.isTouching(Robber.class))  // Robber i policeman se dodirnuli - ako
+        {
+          Greenfoot.stop(); 
+        }
         }
        
        /*if(Greenfoot.isKeyDown("b")){
