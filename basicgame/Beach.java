@@ -52,22 +52,26 @@ public class Beach extends World
     }
     private void prepareTheBeach()
     {
-      
-        // ovo je kod iz početnog Beach konstruktora
       this.addObject(new Police("w","s","a","d"),0 ,0 );
+        // ovo je kod iz početnog Beach konstruktora
+      for(int i=0;i<=10;i++){
       int x=0;
       int y=0;
       while(!this.getObjectsAt(x,y,Police.class).isEmpty())
       {
           x=Greenfoot.getRandomNumber(this.getWidth());
           y=Greenfoot.getRandomNumber(this.getHeight());
+      } 
+      this.addObject(new HidingSpot(), x, y);
       }
+        
+      
         this.addObject(
             new Robber(),
             Greenfoot.getRandomNumber(this.getWidth()),
             Greenfoot.getRandomNumber(this.getHeight())
         );
-        this.addObject(new HidingSpot(), x, y);
+        
         this.counter=100;  // 100 x pozivanje act metodw  
     }
 }
