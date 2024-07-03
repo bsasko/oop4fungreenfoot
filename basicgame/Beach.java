@@ -17,14 +17,15 @@ public class Beach extends World
     {    
         
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(15, 10, 60); 
-        this.addObject(new Police("w","s","a","d"),0 ,0 );
+        super(10, 6, 60); 
+        /*this.addObject(new Police("w","s","a","d"),0 ,0 );
         this.addObject(
             new Robber(),
             Greenfoot.getRandomNumber(this.getWidth()),
             Greenfoot.getRandomNumber(this.getHeight())
         );
-        this.counter=100;  // 100 x pozivanje act metodw
+        this.counter=100;*/  // 100 x pozivanje act metodw
+        this.prepareTheBeach();
         
     }
     public void endTheGame(boolean vin)  // Ispis teksta u klasi Beach (početna klasa - canvas)
@@ -51,13 +52,22 @@ public class Beach extends World
     }
     private void prepareTheBeach()
     {
+      
         // ovo je kod iz početnog Beach konstruktora
       this.addObject(new Police("w","s","a","d"),0 ,0 );
+      int x=0;
+      int y=0;
+      while(!this.getObjectsAt(x,y,Police.class).isEmpty())
+      {
+          x=Greenfoot.getRandomNumber(this.getWidth());
+          y=Greenfoot.getRandomNumber(this.getHeight());
+      }
         this.addObject(
             new Robber(),
             Greenfoot.getRandomNumber(this.getWidth()),
             Greenfoot.getRandomNumber(this.getHeight())
         );
+        this.addObject(new HidingSpot(), x, y);
         this.counter=100;  // 100 x pozivanje act metodw  
     }
 }
