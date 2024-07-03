@@ -29,6 +29,7 @@ public class Beach extends World
     }
     public void endTheGame(boolean vin)  // Ispis teksta u klasi Beach (početna klasa - canvas)
     {
+    this.removeObjects(this.getObjects(Actor.class));
     int x=this.getWidth()/2;
     int y=this.getHeight()/2;
      if(vin){
@@ -36,6 +37,9 @@ public class Beach extends World
      }else{
         this.showText("IZGUBILI STE!", x, y)  ;  
      }
+    Greenfoot.delay(50);
+    this.showText(null,x, y);
+    this.prepareTheBeach();
     Greenfoot.stop(); 
     }
     public void act()
@@ -44,5 +48,16 @@ public class Beach extends World
        if(this.counter==0){
            this.endTheGame(false);
        }
+    }
+    private void prepareTheBeach()
+    {
+        // ovo je kod iz početnog Beach konstruktora
+      this.addObject(new Police("w","s","a","d"),0 ,0 );
+        this.addObject(
+            new Robber(),
+            Greenfoot.getRandomNumber(this.getWidth()),
+            Greenfoot.getRandomNumber(this.getHeight())
+        );
+        this.counter=100;  // 100 x pozivanje act metodw  
     }
 }
