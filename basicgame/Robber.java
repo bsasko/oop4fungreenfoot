@@ -8,30 +8,23 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 
 
-public class Robber extends Actor
+public class Robber extends Person
 {
-    private int delay;
-    private int delayCounter;
+    //private int delay;
+    //private int delayCounter;
     
     /**
      * Act - do whatever the Robber wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public Robber(){
-        this.delay=3;
-        this.delayCounter=0;   
+        super(3);          
     }
-    public void act()
+    
+    /*public void act()
     {
-        if (this.delayCounter==this.delay)
-        {
-            this.movement();
-            this.delayCounter=0;
-        }
-        else{
-                this.delayCounter++;
-            }// Add your action code here.
-    }
+        super.act();  // act metoda se nasljeđuje iz Person klase - apstraktna klasa
+    } */
     public void movement()
     {
         this.setRotation(90*Greenfoot.getRandomNumber(4));
